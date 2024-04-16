@@ -28,6 +28,9 @@
             </div>
         </nav>
     </header>
+    @if (session('msg'))
+        <p class="msg">{{ session('msg') }}</p>
+    @endif
     <div class="container-fluid">
         @yield('content')
     </div>

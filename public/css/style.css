@@ -58,6 +58,10 @@ header {
     padding: 10px;
 }
 
+.navbar a {
+    margin-left: 15px;
+}
+
 /* formulario */
 
 .form-group {
