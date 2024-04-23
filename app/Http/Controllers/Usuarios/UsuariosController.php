@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Usuarios;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class UsuariosController extends Controller
 {
@@ -28,15 +29,25 @@ class UsuariosController extends Controller
     public function logar(Request $request) {
 
         $usuario = new User;
-        $usuario->email = $request->nome;
-        $usuario->password = $request->email;
+        $usuario->email = $request->email;
+        $usuario->password = $request->senha;
 
-        $usuarioBd = User::search('users')->where('email', $usuario->email)->get();
+        $banco = User::where('email', $request->email)->get();
 
-        return view('index', ['userBanco' => $usuarioBd, 'user' => $usuario]);
+        return view('login.teste', ['banco' => $banco, 'user' => $usuario]);
     }
 
     public function login() {
         return view('Login.logar');
+    }
+
+    public function teste () {
+
+        // $usuario = new User;
+        $user = DB::table('users')
+                        ->where('id', '=', 1)
+                        ->get();
+
+        return view('Login.teste', ['user' => $user]);
     }
 }

@@ -7,6 +7,9 @@ Route::get('/', function () {
     return view('index');
 });
 
+// Route::get('teste', 'UsuariosController@teste')->name('teste');
+Route::get('teste', [UsuariosController::class, 'teste'])->name('teste');
+
 Route::prefix('/healthy')->name('healthy.')->namespace('healthy')->group(function () {
 
     Route::get('/cadastro', [UsuariosController::class, 'cadastrar'])->name('cadastrar');
