@@ -16,13 +16,17 @@
     <header>
         <nav class="navbar navbar-expand-lg naxbar-light">
             <div class="m-1 collapse navbar-collapse" id="navbar">
-                <a href="/">H</a>
+                <a class="img-home" href="/"><img class="img" src="/img/h.jpg"/></a>
                 <ul>
                     <li class="nav-item">
                         <a href="" class="nav-link">Sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('healthy.cadastrar') }}" class="nav-link">Cadastro</a>
+                        @if (isset($_SESSION['email']) && $_SESSION['email'] != '')
+                            <a href="{{ route('healthy.cadastro') }}" class="nav-link">Sair</a>
+                        @else
+                            <a href="{{ route('healthy.cadastro') }}" class="nav-link">Cadastro</a>
+                        @endif
                     </li>
                 </ul>
             </div>

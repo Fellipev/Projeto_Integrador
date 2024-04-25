@@ -8,6 +8,17 @@ body {
     position: relative;
 }
 
+.menu-titulo {
+    background-color: #F2A340;
+    width: 100%;
+    color: #FFF;
+
+}
+
+.img {
+    width: 50px;
+}
+
 header {
     background-color: #FFF;
     border-bottom: 1px solid #CCC;
