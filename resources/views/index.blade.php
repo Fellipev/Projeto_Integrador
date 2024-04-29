@@ -2,4 +2,4 @@
 @section('title', 'Healthy')
 @section('content')
     <p>Teste</p>
-@endsection()
+@endsection

@@ -36,12 +36,19 @@ class LoginController extends Controller
             ->first();
 
         if(isset($usuario->nome)) {
+            session_start();
+
             $_SESSION['nome'] = $usuario->nome;
             $_SESSION['email'] = $usuario->email;
 
-            return redirect()->route('healthy.index');
+            return redirect()->route('healthy.noticias.index');
         } else {
             return redirect()->route('healthy.login', ['erro' => 1])->with('msg', 'Usuário não foi encontrado.');
         }
+    }
+
+    public function sair() {
+        session_destroy();
+        return redirect()->route('healthy.login');
     }
 }

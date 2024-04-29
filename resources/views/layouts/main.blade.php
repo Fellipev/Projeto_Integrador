@@ -13,25 +13,21 @@
 
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg naxbar-light">
-            <div class="m-1 collapse navbar-collapse" id="navbar">
-                <a class="img-home" href="/"><img class="img" src="/img/h.jpg"/></a>
-                <ul>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a href="" class="nav-link">Sobre</a>
                     </li>
                     <li class="nav-item">
-                        @if (isset($_SESSION['email']) && $_SESSION['email'] != '')
-                            <a href="{{ route('healthy.cadastro') }}" class="nav-link">Sair</a>
-                        @else
-                            <a href="{{ route('healthy.cadastro') }}" class="nav-link">Cadastro</a>
-                        @endif
+                        <a href="{{ route('healthy.cadastro') }}" class="nav-link">Cadastro</a>
                     </li>
                 </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+
     @if (session('msg'))
         <p class="msg">{{ session('msg') }}</p>
     @endif

@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('app.layouts.main')
 @section('title', 'Boas-vindas')
 @section('content')
     <div class="row text-center" id="navbar">
@@ -13,20 +13,5 @@
         </div>
     </div>
     <div class="container text-center justify-content-center mt-5">
-        <div class="row">
-            <div class="col-12">
-                NOTICIA
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                NOTICIA
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                NOTICIA
-            </div>
-        </div>
     </div>
 @stop

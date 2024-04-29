@@ -2,9 +2,10 @@
 
 use App\Http\Controllers\CadastroController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PesoController;
 use App\Http\Controllers\Usuarios\UsuariosController;
 use App\Http\Controllers\healthy\PrincipalController;
-//use App\Http\Middleware\AutenticacaoMiddleware;
+use App\Http\Controllers\NoticiaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,7 +21,11 @@ Route::prefix('/healthy')->name('healthy.')->group(function () {
     Route::post('/logar', [LoginController::class, 'autenticar'])->name('logar');
 
     Route::middleware('ath')->group(function () {
-        Route::get('/index', [PrincipalController::class, 'index'])->name('index');
+
+        Route::resource('noticias', NoticiaController::class);
+        Route::resource('pesos', PesoController::class);
+
+        Route::get('/sair', [LoginController::class, 'sair'])->name('sair');
 
     });
 
