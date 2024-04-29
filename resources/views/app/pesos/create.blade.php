@@ -14,7 +14,7 @@
             <label for="peso" class="form-label">Peso.</label>
             <input type="text" name="peso" value="{{ old('peso') }}" class="form-control" id="peso" placeholder="Peso (KG)">
         </div>
-        <div class="mb-3">
+        <div class="mb-3 text-center">
             <button class="btn btn-primary">Enviar</button>
         </div>
     </form>

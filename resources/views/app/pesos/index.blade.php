@@ -19,7 +19,7 @@
             <th scope="col">Usuário</th>
             <th scope="col">Peso</th>
             <th scope="col">Dia</th>
-            <th scope="col"></th>
+            <th colspan="2" scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -30,6 +30,11 @@
                 <td>{{ $pesagem->peso }}</td>
                 <td>{{ $pesagem->created_at }}</td>
                 <td><a href="{{ route('healthy.pesos.edit', ['peso' => $pesagem->id]) }}">Editar</a></td>
+                <form action="{{ route('healthy.pesos.destroy', ['peso' => $pesagem->id]) }}">
+                    @csrf
+                    @method('DELETE')
+                    <td><button type="submit" class="btn btn-primary">Excluir</button></td>
+                </form>
             </tr>
         @endforeach
         </tbody>

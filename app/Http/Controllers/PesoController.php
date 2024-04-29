@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Peso;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PesoController extends Controller
 {
@@ -13,7 +14,9 @@ class PesoController extends Controller
      */
     public function index()
     {
-        $pesagens = Peso::join('usuarios', 'usuarios.id', '=', 'id_usuario' )
+        $pesagens = DB::table('pesos')
+            ->join('usuarios', 'pesos.id_usuario', '=', 'usuarios.id' )
+            ->select('pesos.*', 'usuarios.nome')
             ->where('email', $_SESSION['email'])
             ->where('nome', $_SESSION['nome'])
             ->get();
@@ -80,7 +83,20 @@ class PesoController extends Controller
      */
     public function update(Request $request, Peso $peso)
     {
-        //
+        $regras = [
+            'peso' => 'required|decimal:2,2',
+        ];
+        $mensagens = [
+            'peso.required' => 'O campo peso é obrigatório',
+            'peso.decimal' => 'O campo peso deve conter um número decimal!'
+        ];
+
+        $request->validate($regras, $mensagens);
+
+        Peso::find($peso->id)
+            ->update(['peso' => $request->get('peso')]);
+
+        return redirect()->route('healthy.pesos.index')->with('msg', 'Peso editado com sucesso!');
     }
 
     /**
@@ -88,6 +104,8 @@ class PesoController extends Controller
      */
     public function destroy(Peso $peso)
     {
-        //
+        dd('destroy');
+        Peso::find($peso->id)-delete();
+        return redirect()->route('healthy.pesos.index')->with('msg', 'Peso deletado com sucesso!');
     }
 }
