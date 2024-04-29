@@ -19,7 +19,7 @@
         </header>
         <div class="container">
             @if(session('msg'))
-                <p>{{ session('msg') }}</p>
+                <p class="msg">{{ session('msg') }}</p>
             @endif
             @yield('content')
         </div>

@@ -26,7 +26,7 @@ class PesoController extends Controller
      */
     public function create()
     {
-        //
+        return view('app.pesos.create');
     }
 
     /**
@@ -34,7 +34,29 @@ class PesoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $regras = [
+            'peso' => 'required|decimal:2,2',
+        ];
+        $mensagens = [
+            'peso.required' => 'O campo peso é obrigatório',
+            'peso.decimal' => 'O campo peso deve conter um número decimal!'
+        ];
+
+        $request->validate($regras, $mensagens);
+
+        $user = Usuario::where('email', $_SESSION['email'])
+            ->where('nome', $_SESSION['nome'])
+            ->get()
+            ->first();
+
+        $peso = new Peso();
+        $peso->id_usuario = $user->id;
+        $peso->peso = $request->get('peso');
+        $peso->save();
+
+        return redirect()->route('healthy.pesos.index')->with('msg', 'Peso cadastrado com sucesso!');
+
+
     }
 
     /**
@@ -50,7 +72,7 @@ class PesoController extends Controller
      */
     public function edit(Peso $peso)
     {
-        //
+        return view ('app.pesos.edit', ['peso' => $peso]);
     }
 
     /**
