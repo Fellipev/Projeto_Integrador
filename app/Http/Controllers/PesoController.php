@@ -104,8 +104,7 @@ class PesoController extends Controller
      */
     public function destroy(Peso $peso)
     {
-        dd('destroy');
-        Peso::find($peso->id)-delete();
+        $peso->forceDelete();
         return redirect()->route('healthy.pesos.index')->with('msg', 'Peso deletado com sucesso!');
     }
 }

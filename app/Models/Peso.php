@@ -11,5 +11,6 @@ class Peso extends Model
     use SoftDeletes;
     use HasFactory;
 
+    protected $table = "pesos";
     protected $fillable = ['id_usuario', 'peso'];
 }

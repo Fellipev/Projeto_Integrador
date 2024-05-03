@@ -29,12 +29,14 @@
                 <td>{{ $pesagem->nome }}</td>
                 <td>{{ $pesagem->peso }}</td>
                 <td>{{ $pesagem->created_at }}</td>
-                <td><a href="{{ route('healthy.pesos.edit', ['peso' => $pesagem->id]) }}">Editar</a></td>
-                <form action="{{ route('healthy.pesos.destroy', ['peso' => $pesagem->id]) }}">
-                    @csrf
-                    @method('DELETE')
-                    <td><button type="submit" class="btn btn-primary">Excluir</button></td>
-                </form>
+                <td><a href="{{ route('healthy.pesos.edit', $pesagem->id) }}">Editar</a></td>
+                <td>
+                    <form id="form_{{$pesagem->id}}" method="post" action="{{ route('healthy.pesos.destroy', $pesagem->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <a href="#" onclick="document.getElementById('form_{{$pesagem->id}}').submit()">Excluir</a>
+                    </form>
+                </td>
             </tr>
         @endforeach
         </tbody>
