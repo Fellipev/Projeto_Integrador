@@ -3,8 +3,8 @@
 use App\Http\Controllers\CadastroController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PesoController;
-use App\Http\Controllers\Usuarios\UsuariosController;
-use App\Http\Controllers\healthy\PrincipalController;
+use App\Http\Controllers\PostagensController;
+use App\Http\Controllers\PostagemComentarioController;
 use App\Http\Controllers\NoticiaController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +24,8 @@ Route::prefix('/healthy')->name('healthy.')->group(function () {
 
         Route::resource('noticias', NoticiaController::class);
         Route::resource('pesos', PesoController::class);
+        Route::resource('postagem', PostagensController::class);
+        Route::resource('comentario', PostagemComentarioController::class);
 
         Route::get('/sair', [LoginController::class, 'sair'])->name('sair');
 

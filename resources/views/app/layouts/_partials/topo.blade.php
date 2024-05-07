@@ -9,7 +9,7 @@
                     <a class="nav-link" href="{{ route('healthy.pesos.index') }}">Pesagem</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Blog</a>
+                    <a class="nav-link" href="{{ route('healthy.postagem.index') }}">Blog</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('healthy.sair') }}">Sair</a>
