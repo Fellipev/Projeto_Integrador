@@ -33,7 +33,7 @@
                             @if(isset ($postagem->comentarios))
                                 <div class="comentarios">
                                     @foreach($postagem->comentarios as $comentario)
-                                        <p>{{ $comentario->usuario_id }}: {{ $comentario->comentario }}</p>
+                                        <p>{{ $comentario->usuario->nome }}: {{ $comentario->comentario }}</p>
                                         <hr>
                                     @endforeach
                                 </div>

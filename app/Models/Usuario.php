@@ -11,4 +11,8 @@ class Usuario extends Model
 
     protected $table = 'usuarios';
     protected $fillable = ['nome', 'email', 'senha'];
+
+    public function postagemComentario () {
+        return $this->hasMany(PostagemComentario::class, 'id_usuario');
+    }
 }

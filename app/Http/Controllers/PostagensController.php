@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Postagem;
+use App\Models\PostagemComentario;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class PostagensController extends Controller
      */
     public function index()
     {
-        $postagens = Postagem::with(['usuario', 'comentarios'])->paginate(10);
+        $postagens = Postagem::with(['usuario', 'comentarios.usuario'])->paginate(10);
+
         return view('app.postagem.index', ['postagens' => $postagens]);
     }
 
