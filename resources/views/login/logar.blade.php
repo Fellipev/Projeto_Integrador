@@ -9,6 +9,9 @@
                     <h1>Entrar!</h1>
                 </div>
             </div>
+            @if(session('msg'))
+                <p class="msg">{{ session('msg') }}</p>
+            @endif
             <div class="row">
                 <div id="create-user-container" class="col-md-5 offset-md-3">
                     @component('layouts._components.error')

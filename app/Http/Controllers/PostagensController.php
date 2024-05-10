@@ -91,6 +91,9 @@ class PostagensController extends Controller
      */
     public function destroy(Postagem $postagem)
     {
-        //
+        $comentarios = PostagemComentario::where(['postagem_id' => $postagem->id]);
+        $comentarios->delete();
+        $postagem->delete();
+        return redirect()->route('healthy.postagem.index')->with('msg', 'Postagem deletada com sucesso!');
     }
 }

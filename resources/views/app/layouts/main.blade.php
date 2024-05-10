@@ -18,9 +18,9 @@
             @include('app.layouts._partials.topo')
         </header>
         <div class="container">
-            @if(session('msg'))
-                <p class="msg">{{ session('msg') }}</p>
-            @endif
+{{--            @if(session('msg'))--}}
+{{--                <p class="msg">{{ session('msg') }}</p>--}}
+{{--            @endif--}}
             @yield('content')
         </div>
     </body>

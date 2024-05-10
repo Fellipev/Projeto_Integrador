@@ -6,6 +6,9 @@
             <h1>Pesagens!</h1>
         </div>
     </div>
+    @if(session('msg'))
+        <p class="msg">{{ session('msg') }}</p>
+    @endif
     <div class="row">
         <div class="col-12">
             <a href="{{ route('healthy.pesos.create') }}"><button class="btn btn-primary">+</button></a>

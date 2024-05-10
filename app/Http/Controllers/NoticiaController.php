@@ -72,8 +72,9 @@ class NoticiaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Noticia $noticias)
+    public function destroy(Noticia $noticia)
     {
-        //
+        $noticia->delete();
+        return redirect()->route('healthy.noticias.index');
     }
 }
